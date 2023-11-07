@@ -12,17 +12,18 @@ export class CriaChecklistDTO{
     setor:string
 
     @IsString()
-    @IsEnum(periodoChecklist)
-    periodo:periodoChecklist
+    userId:string
 
+    @IsString()
+    //@IsEnum(periodoChecklist)
+    periodo:string
     @IsArray()
     itens:[{
         id:number
         item:string,
         descricao:string
     }]
-    @IsString()
-    createdAt:Date
+    
     @IsString()
     autor:string
 }

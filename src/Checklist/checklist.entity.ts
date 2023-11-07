@@ -18,13 +18,14 @@ export class ChecklistEntity{
     setor:string
 
     @Column({name:'periodo', nullable:false})
-    periodo:periodoChecklist
+    periodo:string
     
+    @Column({name:'user_id',nullable:false})
+     userId:string
     
     /**
      * 
-     @Column({name:'user_id',nullable:false})
-     userId:string
+     
      * @Column({name:'autor',nullable:false})
     autor:string
      */
@@ -38,11 +39,11 @@ export class ChecklistEntity{
      
 
     @CreateDateColumn({name:'created_at'})
-    createdAt:string
+    createdAt:Date
 
     @UpdateDateColumn({name:'updated_at'})
-    updateAt:string
+    updateAt:Date
     
     @DeleteDateColumn({name:'deleted_at'})
-    deletedAt:string
+    deletedAt:Date
 } 

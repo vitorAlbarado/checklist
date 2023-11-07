@@ -18,6 +18,7 @@ export class ChecklistService{
             obj.descricao = c.descricao
             obj.setor = c.setor
             obj.periodo = c.periodo
+            obj.userId = c.userId
             const checklist = await this.checklistRepo.save(obj)
             return checklist
         }

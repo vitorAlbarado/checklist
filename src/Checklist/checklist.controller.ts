@@ -8,7 +8,6 @@ export class ChecklistController{
 
     constructor(
         private checklistService:ChecklistService,
-        private checklistRepo:ChecklistRepository
         ){}
     
     @Post()
