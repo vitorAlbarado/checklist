@@ -1,8 +1,9 @@
 import { IsArray, IsDate, IsEnum, IsJSON, IsNotEmpty, IsPositive, IsString } from "class-validator";
 import { periodoChecklist } from "../enum/checklist.enum";
+import { ItemChecklistEntity } from "../ItemChecklist/item.checklist.entity";
 
 export class CriaChecklistDTO{
-    
+       
 
     @IsString()
     @IsNotEmpty()
@@ -15,14 +16,10 @@ export class CriaChecklistDTO{
     userId:string
 
     @IsString()
-    //@IsEnum(periodoChecklist)
     periodo:string
+    
     @IsArray()
-    itens:[{
-        id:number
-        item:string,
-        descricao:string
-    }]
+    itens:ItemChecklistEntity[]
     
     @IsString()
     autor:string

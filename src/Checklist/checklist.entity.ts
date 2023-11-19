@@ -1,15 +1,13 @@
-import { Column, CreateDateColumn, DeleteDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm"
+import { Column, CreateDateColumn, DeleteDateColumn, Entity, JoinColumn, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm"
 import {  periodoChecklist } from "./enum/checklist.enum"
+import {  ItemChecklistEntity } from "./ItemChecklist/item.checklist.entity"
 
-class Item {
-    item:string
-    descricao:string
-}
+
 @Entity({name:'checklists'})
 export class ChecklistEntity{
 
     @PrimaryGeneratedColumn('uuid')
-    id:number
+    id:string
 
     @Column({name:'descricao'})
     descricao:string
@@ -17,27 +15,16 @@ export class ChecklistEntity{
     @Column({name:'setor',length:30, nullable:false})
     setor:string
 
-    @Column({name:'periodo', nullable:false})
+    @Column({name:'periodo', nullable:false,enum:periodoChecklist})
     periodo:string
     
     @Column({name:'user_id',nullable:false})
      userId:string
-    
-    /**
-     * 
-     
-     * @Column({name:'autor',nullable:false})
-    autor:string
-     */
 
+    @OneToMany(()=>ItemChecklistEntity, itemChecklistEntity => 
+    itemChecklistEntity.checklistId, {cascade:true, eager:true})
+    itens:ItemChecklistEntity[]
     
-   /**
-    * 
-    *  @OneToMany(type => Item, item => item.)
-    itens:Item[]
-    */
-     
-
     @CreateDateColumn({name:'created_at'})
     createdAt:Date
 

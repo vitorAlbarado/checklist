@@ -1,15 +1,23 @@
-import {  periodoChecklist } from "../enum/checklist.enum";
-//import { Item } from "../enum/item.entity";
+import { ItemEntity } from "src/NewChecklist/item.entity";
+import { BuscaItemDTO } from "./buscaItem.dto";
+import { IsArray, IsDate, IsString } from "class-validator";
 
-export class BuscaChecklistDTO{
-    constructor(
-        id:number,
-        descricao:string,
-        setor:string,
-        periodo:periodoChecklist,
-        //itens:Item[],
-        createdAt:string,
-        autor:string
-        ){}
+export class BuscaChecklistDTO {
     
+    @IsString()
+    descricao: string
+
+    @IsString()
+    setor: string
+    
+    @IsString()
+    periodo: string
+    
+    @IsArray()
+    itens: BuscaItemDTO[]
+
+    @IsDate()
+    createdAt: Date
+    
+
 }
